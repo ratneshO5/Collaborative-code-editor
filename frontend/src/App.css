@@ -1,0 +1,346 @@
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --white: #ffffff;
+  --dark: #0f172a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.join-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  padding: 1.5rem;
+}
+
+.join-form {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: var(--white);
+}
+
+.join-form h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--white);
+}
+
+.join-form input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.join-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.join-form input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.join-form button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--white);
+  color: var(--primary);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.join-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.editor-container {
+  display: flex;
+  height: 100vh;
+  background: var(--dark);
+}
+
+.sidebar {
+  width: 280px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.room-info {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.room-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.copy-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--white);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+.copy-success {
+  color: #10b981;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.sidebar h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar ul li {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar ul li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.typing-indicator {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #10b981; /* Changed to green to make it more visible */
+  font-style: italic;
+  animation: blinkingText 1.2s infinite; /* Optional: adds a subtle blinking effect */
+}
+
+@keyframes blinkingText {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1.0; }
+}
+
+.language-selector {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--white);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  font-size: 0.9rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.language-selector:hover {
+  background-color: rgba(30, 41, 59, 0.95);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.language-selector:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Style for the options */
+.language-selector option {
+  background-color: #1e293b;
+  color: var(--white);
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* For Firefox */
+.language-selector:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 var(--white);
+}
+
+/* For IE/Edge */
+.language-selector::-ms-expand {
+  display: none;
+}
+
+/* Dark background for the dropdown */
+.language-selector:focus option:checked {
+  background: var(--primary);
+  color: white;
+}
+
+/* Hover state for options */
+.language-selector option:hover {
+  background-color: var(--primary);
+}
+
+.leave-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.leave-button:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.editor-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.run-btn {
+  position: absolute;
+  right: 2rem;
+  bottom: 200px;
+  padding: 0.75rem 2rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.run-btn:active {
+  background: #0e9e6e;
+  transform: scale(0.99);
+}
+
+.run-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #6b7280;
+}
+
+.run-btn.executing {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.run-btn.executing::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.output-console {
+  height: 40%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--white);
+  margin-top: 1rem;
+  resize: vertical;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
