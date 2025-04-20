@@ -1,10 +1,13 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import io from "socket.io-client";
 import Editor from "@monaco-editor/react";
 
-const socket = io("https://collaborative-code-editor-kappa.vercel.app/", {
+const socket = io("http://localhost:3000", {
   transports: ['websocket'],
+  cors: {
+    origin: "http://localhost:5173"
+  }
 });
 
 const App = () => {
@@ -16,10 +19,8 @@ const App = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [users, setUsers] = useState([]);
   const [typing, setTyping] = useState("");
-  const typingTimeoutRef = useRef(null);
   const [outPut, setOutPut] = useState("");
   const version = "*";
-
 
   useEffect(() => {
     socket.on("userJoined", (users) => {
@@ -31,15 +32,8 @@ const App = () => {
     });
 
     socket.on("userTyping", (user) => {
-      // Clear any existing timeout
-      if (typingTimeoutRef.current) {
-        clearTimeout(typingTimeoutRef.current);
-      }
-      
-      setTyping(`${user.slice(0, 8)}... is typing`);
-      
-      // Set new timeout and save reference
-      typingTimeoutRef.current = setTimeout(() => setTyping(""), 2000);
+      setTyping(`${user.slice(0, 8)}... is Typing`);
+      setTimeout(() => setTyping(""), 2000);
     });
 
     socket.on("languageUpdate", (newLanguage) => {
@@ -56,11 +50,6 @@ const App = () => {
       socket.off("userTyping");
       socket.off("languageUpdate");
       socket.off("codeResponse");
-
-      if (typingTimeoutRef.current) {
-        clearTimeout(typingTimeoutRef.current);
-      }
-
     };
   }, []);
 
@@ -131,9 +120,7 @@ const App = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
-          <button className="btn-grad" onClick={joinRoom}> Join Room </button>
-
-
+          <button onClick={joinRoom}>Join Room</button>
         </div>
       </div>
     );
@@ -155,11 +142,7 @@ const App = () => {
             <li key={index}>{user.slice(0, 8)}...</li>
           ))}
         </ul>
-        {typing && (
-    <div className="typing-indicator">
-      <strong>{typing}</strong>
-    </div>
-  )}
+        <p className="typing-indicator">{typing}</p>
         <select
           className="language-selector"
           value={language}
@@ -189,7 +172,7 @@ const App = () => {
           }}
         />
         <button className="run-btn" onClick={runCode}>
-          RUN
+          Run 
         </button>
         <textarea
           className="output-console"
