@@ -3,7 +3,7 @@ import "./App.css";
 import io from "socket.io-client";
 import Editor from "@monaco-editor/react";
 
-const socket = io("https://collaborative-code-editor-backend-one.vercel.app/", {
+const socket = io("https://code-j0x1.onrender.com", {
   transports: ['websocket'],
   cors: {
     origin: "https://collaborative-code-editor-kappa.vercel.app/"
