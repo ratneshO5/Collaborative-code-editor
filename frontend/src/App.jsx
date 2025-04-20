@@ -3,10 +3,10 @@ import "./App.css";
 import io from "socket.io-client";
 import Editor from "@monaco-editor/react";
 
-const socket = io("http://localhost:3000", {
+const socket = io("https://collaborative-code-editor-backend-one.vercel.app/", {
   transports: ['websocket'],
   cors: {
-    origin: "http://localhost:5173"
+    origin: "https://collaborative-code-editor-kappa.vercel.app/"
   }
 });
 
