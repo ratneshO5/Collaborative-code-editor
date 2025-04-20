@@ -22,11 +22,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--primary-dark) 100%
-  );
+  background: #070352;
+background: linear-gradient(334deg, rgba(7, 3, 82, 1) 0%, rgba(9, 9, 121, 1) 25%, rgba(20, 136, 224, 1) 57%, rgba(0, 212, 255, 1) 100%);
   padding: 1.5rem;
 }
 
@@ -71,11 +68,14 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.join-form button {
+
+.join-form button,
+.btn-grad {
   width: 100%;
   padding: 1rem;
-  background: var(--white);
-  color: var(--primary);
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
+  background-size: 200% auto;
+  color: white;
   border: none;
   border-radius: 12px;
   font-size: 1.1rem;
@@ -83,12 +83,18 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 0.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 0 0 20px #0e0e0e50;
 }
 
-.join-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.join-form button:hover,
+.btn-grad:hover {
+  background-position: right center;
+  color: white;
+  text-decoration: none;
 }
+
 
 .editor-container {
   display: flex;

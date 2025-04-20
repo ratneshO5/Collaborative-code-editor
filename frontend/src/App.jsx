@@ -3,11 +3,8 @@ import "./App.css";
 import io from "socket.io-client";
 import Editor from "@monaco-editor/react";
 
-const socket = io("http://localhost:3000/", {
+const socket = io("https://collaborative-code-editor-kappa.vercel.app/", {
   transports: ['websocket'],
-  cors: {
-    origin: "http://localhost:5173/"
-  }
 });
 
 const App = () => {
@@ -134,7 +131,9 @@ const App = () => {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
-          <button onClick={joinRoom}>Join Room</button>
+          <button className="btn-grad" onClick={joinRoom}> Join Room </button>
+
+
         </div>
       </div>
     );
